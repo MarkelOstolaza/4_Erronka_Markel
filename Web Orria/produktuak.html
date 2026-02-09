@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Saioa Hasi - Indiusurbil</title>
+    <title>Produktuak - Indiusurbil</title>
 </head>
 <body>
     <header>
@@ -34,25 +34,18 @@
         </nav>
     </header>
 
-    <main class="login-main">
-        <div class="login-card">
-            <h1>Saioa Hasi</h1>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="username">Erabiltzailea</label>
-                    <input type="text" id="username" name="username" placeholder="Sartu erabiltzailea..." required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Pasahitza</label>
-                    <input type="password" id="password" name="password" placeholder="Sartu pasahitza..." required>
-                </div>
-                <button type="submit" class="login-btn">Sartu</button>
-            </form>
-            <div id="login-message" class="message"></div>
-            <p style="font-size: 0.8em; color: #888; margin-top: 20px;">
-                (Probatzeko: admin / 1234)
-            </p>
+    <main>
+        <h1 style="text-align:center;">Gure Produktuak</h1>
+        
+        <div id="filter-container" class="filter-buttons">
+            <button class="filter-btn active" data-category="all">Guztiak</button>
+            <button class="filter-btn" data-category="men's clothing">Gizonen arropa</button>
+            <button class="filter-btn" data-category="women's clothing">Emakumeen arropa</button>
+            <button class="filter-btn" data-category="electronics">Elektronika</button>
+            <button class="filter-btn" data-category="jewelery">Bitxiak</button>
         </div>
+
+        <div id="products-container" class="products-grid"></div>
     </main>
 
     <footer class="footer">
@@ -82,6 +75,6 @@
     </footer>
 
     <script src="js/cartService.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/filtroa.js"></script>
 </body>
 </html>
