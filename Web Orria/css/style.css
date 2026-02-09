@@ -435,6 +435,95 @@ details[open] summary::before {
     border: 1px solid #f5c6cb;
 }
 
+/* --- KARRUSELAREN ESTILOAK --- */
+
+.carousel-container {
+    position: relative;
+    height: 400px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px; /* Tamaina mugatu */
+}
+
+.carousel-track-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden; /* Kanpoan dagoena ezkutatu */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background: white;
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Trantsizio leuna */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide.current-slide {
+    opacity: 1; /* Aktibo dagoena bakarrik ikusi */
+    z-index: 1;
+}
+
+.slide-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.slide-content img {
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Geziak (Next / Prev) */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000049;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+}
+
+.carousel-btn:hover {
+    background-color: rgb(47, 13, 133);
+}
+
+.carousel-btn.prev { left: -50px; }
+.carousel-btn.next { right: -50px; }
+
+/* Botoia "Ikusi dena" */
+.btn-ver-todo {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000049;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .menu-principal {
         display: none;

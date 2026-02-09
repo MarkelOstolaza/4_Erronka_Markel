@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Produktuak - Indiusurbil</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo"></a></div>
+            <ul class="menu">
+                <li><a href="index.html">Orrialde nagusia</a></li>
+                <li><a href="produktuak.html">Produktuak</a></li>
+                <li><a href="estadistikak.html">Estadistikak</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="carrito">
+                <a href="saskia.html"><img src="img/cesta.png" alt="cesta" /> <span id="cuenta-carrito">0</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Gure Katalogoa</h1>
+        
+        <div id="filter-container" class="filter-buttons">
+            <button class="filter-btn active" data-category="all">Guztiak</button>
+            <button class="filter-btn" data-category="men's clothing">Gizonen arropa</button>
+            <button class="filter-btn" data-category="women's clothing">Emakumeen arropa</button>
+            <button class="filter-btn" data-category="electronics">Elektronika</button>
+            <button class="filter-btn" data-category="jewelery">Bitxiak</button>
+        </div>
+
+        <div id="products-container" class="products-grid"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="oharlegalak"><a href="#">© 2026 Indiusurbil</a></div>
+    </footer>
+
+    <script src="js/cartService.js"></script>
+    <script src="js/filtroa.js"></script> </body>
+</html>
