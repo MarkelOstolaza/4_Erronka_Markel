@@ -52,3 +52,26 @@ function actualizarNumeroCarrito() {
         cuentaElement.innerText = cuenta;
     }
 }
+
+// --- KONPONKETA: MENU HANBURGESA KUDEAKETA ---
+// Kode honek ziurtatzen du PCan menua beti irekita dagoela
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarNumeroCarrito();
+    gestionarMenuResponsive();
+    
+    // Pantaila tamaina aldatzean ere egiaztatu
+    window.addEventListener('resize', gestionarMenuResponsive);
+});
+
+function gestionarMenuResponsive() {
+    const details = document.querySelector('nav details');
+    if (details) {
+        // 768px baino handiagoa bada (PC), behartu irekitzera
+        if (window.innerWidth > 768) {
+            details.setAttribute('open', 'true');
+        } else {
+            // Mugikorrean bagaude, utzi erabiltzailearen esku (ez itxi automatikoki)
+            // Nahi izanez gero, hemen 'removeAttribute' jar daiteke beti itxita hasteko resize egitean
+        }
+    }
+}
