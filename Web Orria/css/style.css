@@ -1,0 +1,492 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f7f4; 
+    line-height: 1.6;
+    color: #333333; 
+}
+
+header {   
+    background: linear-gradient( #000049, rgb(47, 13, 133)); 
+    margin: 0 auto;
+    padding: 15px 30px;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2000px;
+    margin: auto;
+    position: relative; 
+}
+
+header {
+    border-bottom: 1px solid #d9d9d9; 
+}
+
+.menu-hamburguesa {
+    display: none;
+    position: absolute;
+}
+
+
+details {
+    margin-left: auto; 
+    margin-right: 0;
+    position: static; 
+}
+
+summary {
+    list-style: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: all 0.3s ease;  
+    position: relative;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::before {
+    content: '\2630';
+    font-size: 24px;
+}
+
+details[open] summary::before {
+    content: '\2715';
+}
+
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30%; 
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px;
+    width: max-content; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    
+}
+
+.menu ul {
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffffff; 
+    padding: 12px 20px;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.carrito {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.carrito img {
+    width: 32px;
+    height: 32px;
+}
+
+
+
+
+.main{
+    background: linear-gradient( #000049, rgb(47, 13, 133));
+}
+
+
+
+.footer {
+    background: linear-gradient( #000049, rgb(47, 13, 133)); 
+    padding: 40px 30px;
+    border-top: 1px solid #444444;
+    color: #cccccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.oharlegalak {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.oharlegalak a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.oharlegalak a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
+
+.logos ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.logos img {
+    height: 30px;
+}
+
+.logos a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 1px solid #555555;
+}
+
+.cesta {
+    width: 5vh;
+    display: flex;
+}
+
+#cuenta-carrito{
+    background-color: rgb(255, 234, 0);
+    padding: 0px  1.2vh;
+    border-radius: 100%;
+    font-size: large;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: -0.6%;
+    color: #000049;
+
+}
+.logos a:hover {
+    transform: scale(1.1);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #000049;
+    color: #000049;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: rgba(0, 0, 73, 0.1);
+}
+
+.filter-btn.active {
+    background-color: #000049; /* Zure kolore korporatiboa */
+    color: white;
+}
+
+/* Produktuen txartelak (Card) */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    color: #2f0d85;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* --- ESTADISTIKAK ORRIAREN ESTILOAK --- */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-top: 5px solid #000049; /* Zure kolore korporatiboa */
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    margin-bottom: 15px;
+    color: #000049;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.stat-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.stat-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+}
+
+.stat-card li:last-child {
+    border-bottom: none;
+}
+
+/* Irabazi totalak nabarmentzeko */
+.total-earnings {
+    background: linear-gradient(135deg, #000049, #2f0d85);
+    color: white;
+}
+
+.total-earnings h3 {
+    color: #ffd700; /* Urre kolorea */
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.big-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Stock baxua nabarmentzeko */
+.stat-card.warning {
+    border-top-color: #ff4444;
+}
+
+/* --- LOGIN ORRIAREN ESTILOAK --- */
+
+.login-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh; /* Pantailaren erdian jartzeko */
+    background-color: #f8f7f4;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-card h1 {
+    margin-bottom: 20px;
+    color: #000049;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(#000049, rgb(47, 13, 133));
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0; /* Aurreko botoien marjinak kentzeko */
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+/* Mezuak (Ondo / Gaizki) */
+.message {
+    margin-top: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 768px) {
+    .menu-principal {
+        display: none;
+    }
+    
+    .menu-hamburguesa {
+        display: block;
+    }
+    
+    details {
+        margin-right: 0;
+    }
+    
+    .menu {
+        
+        left: 0;
+        right: 0;
+        padding: 15px 0;
+        transform: translateX(150%);
+        display: block;
+            background: linear-gradient( #000049, rgb(47, 13, 133)); 
+    }
+    
+    .menu ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .menu li {
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .menu li a {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+    
+    nav {
+        padding: 0 15px;
+    }
+    
+    .logos ul {
+        justify-content: center;
+    }
+}

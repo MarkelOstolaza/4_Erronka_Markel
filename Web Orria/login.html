@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Saioa Hasi - Indiusurbil</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Indiusurbil logoa" class="logo" />
+                </a>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Orrialde nagusia</a></li>
+                <li><a href="index.html">Produktuak</a></li>
+                <li><a href="estadistikak.html">Estadistikak</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="carrito">
+                <a href="saskia.html"><img src="img/cesta.png" alt="cesta" /> <span id="cuenta-carrito">0</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-main">
+        <div class="login-card">
+            <h1>Saioa Hasi</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Erabiltzailea</label>
+                    <input type="text" id="username" name="username" placeholder="Sartu erabiltzailea..." required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Pasahitza</label>
+                    <input type="password" id="password" name="password" placeholder="Sartu pasahitza..." required>
+                </div>
+                <button type="submit" class="login-btn">Sartu</button>
+            </form>
+            
+            <div id="login-message" class="message"></div>
+            
+            <p style="font-size: 0.8em; color: #888; margin-top: 20px;">
+                (Probatzeko: erabiltzailea: <b>admin</b> / pasahitza: <b>1234</b>)
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="oharlegalak">
+            <a href="#">© 2026 Indiusurbil</a>
+        </div>
+    </footer>
+
+    <script src="js/cartService.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
