@@ -6,6 +6,13 @@ public class Konexioa {
     private static final String PASAHITZA = "MarkelOst05";
 
     public static Connection getKonexioa() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Errorea: MySQL Driverra ez da aurkitu.");
+            e.printStackTrace();
+        }
+        
         return DriverManager.getConnection(URL, ERABILTZAILEA, PASAHITZA);
     }
 }

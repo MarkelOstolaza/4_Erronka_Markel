@@ -3,7 +3,9 @@ import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProduktuDAO {
 
@@ -53,7 +55,7 @@ public class ProduktuDAO {
         }
     }
 
-    // 4. Produktuak Zerrendatu (Ordenazioarekin)
+    // 4. Produktuak Zerrendatu
     public List<Produktua> getProduktuak(String ordenazioa) {
         List<Produktua> lista = new ArrayList<>();
         String sql = "SELECT * FROM PRODUKTUAK ORDER BY " + (ordenazioa.equals("prezioa") ? "prezioa" : "stocka");
@@ -67,13 +69,12 @@ public class ProduktuDAO {
         return lista;
     }
 
-    // 5. Bilaketa (Izena edo deskribapena)
-    public List<Produktua> bilatuProduktua(String testua) {
+    // 5. Bilaketa (Izena BAKARRIK)
+    public List<Produktua> bilatuProduktua(String izena) {
         List<Produktua> lista = new ArrayList<>();
-        String sql = "SELECT * FROM PRODUKTUAK WHERE izena LIKE ? OR deskribapena LIKE ?";
+        String sql = "SELECT * FROM PRODUKTUAK WHERE izena LIKE ?";
         try (Connection conn = Konexioa.getKonexioa(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, "%" + testua + "%");
-            pstmt.setString(2, "%" + testua + "%");
+            pstmt.setString(1, "%" + izena + "%");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 lista.add(mapResultSetToProduktua(rs));
@@ -84,22 +85,38 @@ public class ProduktuDAO {
         return lista;
     }
 
-    // 6. CSV-tik kargatu
+    // 6. Kategoriak lortu
+    public Map<Integer, String> getKategoriak() {
+        Map<Integer, String> kategoriak = new HashMap<>();
+        String sql = "SELECT id, izena FROM KATEGORIAK";
+        try (Connection conn = Konexioa.getKonexioa(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                kategoriak.put(rs.getInt("id"), rs.getString("izena"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return kategoriak;
+    }
+
+    // 7. CSV-tik kargatu
     public void kargatuCSV(String fitxPath) {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxPath))) {
             String lerroa;
-            br.readLine(); // Goiburua saltatu
+            br.readLine();
             while ((lerroa = br.readLine()) != null) {
                 String[] d = lerroa.split(",");
-                Produktua p = new Produktua(d[0], d[1], Double.parseDouble(d[2]), Integer.parseInt(d[3]), Integer.parseInt(d[4]), d[5]);
-                produktuBerriaSortu(p);
+                if (d.length >= 6) {
+                    Produktua p = new Produktua(d[0], d[1], Double.parseDouble(d[2]), Integer.parseInt(d[3]), Integer.parseInt(d[4]), d[5]);
+                    produktuBerriaSortu(p);
+                }
             }
         } catch (Exception e) {
             System.out.println("Errorea CSV kargatzean: " + e.getMessage());
         }
     }
 
-    // 7. JSON Esportatu (Egitura sinplea kanpoko liburutegirik gabe)
+    // 8. JSON Esportatu
     public void esportatuJSON(String fitxIzena, List<Produktua> produktuak) {
         try (PrintWriter out = new PrintWriter(new FileWriter(fitxIzena))) {
             out.println("[");
@@ -114,7 +131,6 @@ public class ProduktuDAO {
         }
     }
 
-    // Helper metodoa
     private Produktua mapResultSetToProduktua(ResultSet rs) throws SQLException {
         return new Produktua(rs.getInt("id"), rs.getString("izena"), rs.getString("deskribapena"),
                 rs.getDouble("prezioa"), rs.getInt("stocka"), rs.getInt("kategoria_id"), rs.getString("irudia_url"));

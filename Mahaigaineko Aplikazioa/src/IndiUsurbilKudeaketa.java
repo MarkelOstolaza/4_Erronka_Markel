@@ -12,12 +12,19 @@ public class IndiUsurbilKudeaketa {
             System.out.println("1. Produktu berria gehitu");
             System.out.println("2. CSV fitxategitik kargatu");
             System.out.println("3. Produktuak ikusi / Eguneratu / Ezabatu");
-            System.out.println("4. Bilatu produktuak");
+            System.out.println("4. Bilatu produktuak (Izenez)");
             System.out.println("5. Esportatu JSON (Guztiak)");
             System.out.println("6. Irten");
             System.out.print("Aukeratu: ");
 
-            int aukera = Integer.parseInt(sc.nextLine());
+            int aukera = -1;
+            try {
+                aukera = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Mesedez, sartu zenbaki bat.");
+                continue;
+            }
+
             if (aukera == 6) {
                 break;
             }
@@ -30,8 +37,16 @@ public class IndiUsurbilKudeaketa {
                     double pr = Double.parseDouble(sc.nextLine());
                     System.out.print("Stock: ");
                     int st = Integer.parseInt(sc.nextLine());
-                    System.out.print("Kategoria ID (1-4): ");
+
+                    System.out.println("--- KATEGORIAK ---");
+                    Map<Integer, String> kats = dao.getKategoriak();
+                    for (Map.Entry<Integer, String> entry : kats.entrySet()) {
+                        System.out.println(entry.getKey() + ". " + entry.getValue());
+                    }
+
+                    System.out.print("Aukeratu Kategoria ID: ");
                     int kat = Integer.parseInt(sc.nextLine());
+
                     dao.produktuBerriaSortu(new Produktua(iz, "", pr, st, kat, ""));
                     break;
                 case 2:
@@ -40,27 +55,62 @@ public class IndiUsurbilKudeaketa {
                     break;
                 case 3:
                     System.out.print("Ordenatu (1: Prezioa, 2: Stock): ");
-                    String ord = sc.nextLine().equals("1") ? "prezioa" : "stocka";
+                    String ordIn = sc.nextLine();
+                    String ord = ordIn.equals("1") ? "prezioa" : "stocka";
                     List<Produktua> lista = dao.getProduktuak(ord);
-                    lista.forEach(System.out::println);
+
+                    for (Produktua p : lista) {
+                        System.out.println(p);
+                    }
+
                     System.out.print("\nEkintza (0: Utzi, ID: Aukeratu ezabatzeko/eguneratzeko): ");
                     int idSel = Integer.parseInt(sc.nextLine());
+
                     if (idSel != 0) {
                         System.out.print("1: Eguneratu stock-a, 2: Ezabatu: ");
                         int op = Integer.parseInt(sc.nextLine());
-                        if (op == 2) {
+
+                        if (op == 1) {
+                            System.out.print("Sartu stock berria: ");
+                            int stockBerria = Integer.parseInt(sc.nextLine());
+                            Produktua eguneratzeko = null;
+                            for (Produktua p : lista) {
+                                if (p.getId() == idSel) {
+                                    eguneratzeko = p;
+                                    break;
+                                }
+                            }
+                            if (eguneratzeko != null) {
+                                Produktua pBerria = new Produktua(
+                                        eguneratzeko.getId(),
+                                        eguneratzeko.getIzena(),
+                                        eguneratzeko.getDeskribapena(),
+                                        eguneratzeko.getPrezioa(),
+                                        stockBerria,
+                                        eguneratzeko.getKategoriaId(),
+                                        eguneratzeko.getIrudiaUrl()
+                                );
+                                dao.eguneratuProduktua(pBerria);
+                                System.out.println("Stock-a ondo eguneratu da.");
+                            } else {
+                                System.out.println("Errorea: Ez da ID hori duen produkturik aurkitu.");
+                            }
+                        } else if (op == 2) {
                             dao.ezabatuProduktua(idSel);
+                            System.out.println("Produktua ezabatu da.");
                         }
                     }
                     break;
                 case 4:
-                    System.out.print("Bilaketa terminoa: ");
+                    System.out.print("Sartu produktuaren izena: ");
                     dao.bilatuProduktua(sc.nextLine()).forEach(System.out::println);
                     break;
                 case 5:
                     dao.esportatuJSON("produktuak.json", dao.getProduktuak("prezioa"));
                     System.out.println("Esportatuta!");
                     break;
+                default:
+                    System.out.println("Aukera okerra.");
             }
         }
         sc.close();
