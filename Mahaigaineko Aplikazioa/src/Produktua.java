@@ -1,4 +1,3 @@
-
 public class Produktua {
 
     private int id;
