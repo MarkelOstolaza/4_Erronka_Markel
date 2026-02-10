@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class IndiUsurbilKudeaketa {
@@ -36,16 +37,16 @@ public class IndiUsurbilKudeaketa {
                     double pr = Double.parseDouble(sc.nextLine());
                     System.out.print("Stock: ");
                     int st = Integer.parseInt(sc.nextLine());
-                    
+
                     System.out.println("--- KATEGORIAK ---");
                     Map<Integer, String> kats = dao.getKategoriak();
                     for (Map.Entry<Integer, String> entry : kats.entrySet()) {
                         System.out.println(entry.getKey() + ". " + entry.getValue());
                     }
-                    
+
                     System.out.print("Aukeratu Kategoria ID: ");
                     int kat = Integer.parseInt(sc.nextLine());
-                    
+
                     dao.produktuBerriaSortu(new Produktua(iz, "", pr, st, kat, ""));
                     break;
                 case 2:
@@ -57,18 +58,18 @@ public class IndiUsurbilKudeaketa {
                     String ordIn = sc.nextLine();
                     String ord = ordIn.equals("1") ? "prezioa" : "stocka";
                     List<Produktua> lista = dao.getProduktuak(ord);
-                    
+
                     for (Produktua p : lista) {
                         System.out.println(p);
                     }
-                    
+
                     System.out.print("\nEkintza (0: Utzi, ID: Aukeratu ezabatzeko/eguneratzeko): ");
                     int idSel = Integer.parseInt(sc.nextLine());
-                    
+
                     if (idSel != 0) {
                         System.out.print("1: Eguneratu stock-a, 2: Ezabatu: ");
                         int op = Integer.parseInt(sc.nextLine());
-                        
+
                         if (op == 1) {
                             System.out.print("Sartu stock berria: ");
                             int stockBerria = Integer.parseInt(sc.nextLine());
@@ -81,13 +82,13 @@ public class IndiUsurbilKudeaketa {
                             }
                             if (eguneratzeko != null) {
                                 Produktua pBerria = new Produktua(
-                                    eguneratzeko.getId(),
-                                    eguneratzeko.getIzena(),
-                                    eguneratzeko.getDeskribapena(),
-                                    eguneratzeko.getPrezioa(),
-                                    stockBerria,
-                                    eguneratzeko.getKategoriaId(),
-                                    eguneratzeko.getIrudiaUrl()
+                                        eguneratzeko.getId(),
+                                        eguneratzeko.getIzena(),
+                                        eguneratzeko.getDeskribapena(),
+                                        eguneratzeko.getPrezioa(),
+                                        stockBerria,
+                                        eguneratzeko.getKategoriaId(),
+                                        eguneratzeko.getIrudiaUrl()
                                 );
                                 dao.eguneratuProduktua(pBerria);
                                 System.out.println("Stock-a ondo eguneratu da.");

@@ -1,10 +1,11 @@
+
 import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List; // Hau gehitu behar da
-import java.util.Map;     // Hau gehitu behar da
+import java.util.List;
+import java.util.Map;
 
 public class ProduktuDAO {
 
@@ -71,7 +72,7 @@ public class ProduktuDAO {
     // 5. Bilaketa (Izena BAKARRIK)
     public List<Produktua> bilatuProduktua(String izena) {
         List<Produktua> lista = new ArrayList<>();
-        String sql = "SELECT * FROM PRODUKTUAK WHERE izena LIKE ?"; 
+        String sql = "SELECT * FROM PRODUKTUAK WHERE izena LIKE ?";
         try (Connection conn = Konexioa.getKonexioa(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, "%" + izena + "%");
             ResultSet rs = pstmt.executeQuery();
@@ -84,7 +85,7 @@ public class ProduktuDAO {
         return lista;
     }
 
-    // 6. Kategoriak lortu (METODO BERRIA)
+    // 6. Kategoriak lortu
     public Map<Integer, String> getKategoriak() {
         Map<Integer, String> kategoriak = new HashMap<>();
         String sql = "SELECT id, izena FROM KATEGORIAK";
@@ -102,10 +103,10 @@ public class ProduktuDAO {
     public void kargatuCSV(String fitxPath) {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxPath))) {
             String lerroa;
-            br.readLine(); 
+            br.readLine();
             while ((lerroa = br.readLine()) != null) {
                 String[] d = lerroa.split(",");
-                if(d.length >= 6) {
+                if (d.length >= 6) {
                     Produktua p = new Produktua(d[0], d[1], Double.parseDouble(d[2]), Integer.parseInt(d[3]), Integer.parseInt(d[4]), d[5]);
                     produktuBerriaSortu(p);
                 }
