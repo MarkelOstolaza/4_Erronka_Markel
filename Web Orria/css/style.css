@@ -36,6 +36,49 @@ nav {
     position: relative; /* Hau beharrezkoa da menua zentratzeko */
 }
 
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30%; 
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px;
+    width: max-content; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    
+}
+
+.menu ul {
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffffff; 
+    padding: 12px 20px;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* LOGOA */
 .logo img {
     height: 60px;
@@ -139,125 +182,58 @@ main {
 
 /* --- RESPONSIVE / MUGIKORRA (Menu Hanburgesa) --- */
 @media (max-width: 768px) {
-    nav {
-        padding: 0 15px;
-    }
-
-    /* Details etiketa (hanburgesa botoia) */
-    details {
-        margin-left: auto;
-        margin-right: 0;
-        display: block;
-    }
-
-    summary {
-        list-style: none;
-        cursor: pointer;
-        font-size: 24px;
-        color: #ffffff;
-        padding: 10px;
-    }
-
-    summary::-webkit-details-marker {
+    .menu-principal {
         display: none;
     }
-
-    summary::before {
-        content: '\2630'; /* Hiru marrak */
+    
+    .menu-hamburguesa {
+        display: block;
     }
-
-    details[open] summary::before {
-        content: '\2715'; /* X ikurra */
+    
+    details {
+        margin-right: 0;
     }
-
-    /* Menua irekitzen denean */
+    
     .menu {
-        position: absolute;
-        top: 80px;
+        
         left: 0;
         right: 0;
-        background: linear-gradient(#000049, rgb(47, 13, 133));
-        flex-direction: column;
-        width: 100%;
-        padding: 20px 0;
-        z-index: 1000;
-        display: flex;
-        gap: 15px;
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .menu li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .menu li a {
+        padding: 15px 0;
+        transform: translateX(150%);
         display: block;
-        padding: 15px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        text-decoration: none;
-        color: white;
-        font-size: 18px;
+            background: linear-gradient( #000049, rgb(47, 13, 133)); 
     }
-
+    
+    .menu ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .menu li {
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .menu li a {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    
     .footer {
         flex-direction: column;
         text-align: center;
         gap: 25px;
+        padding: 30px 20px;
     }
-}
-
-/* --- PANTAILA HANDIAK (PC) --- */
-@media (min-width: 769px) {
-
-    /* Details etiketa */
-    details {
-        display: block;
-        /* margin auto kendu dugu, menua absolutuki kokatuko dugulako */
+    
+    nav {
+        padding: 0 15px;
     }
-
-    /* Hanburgesa botoia ezkutatu */
-    summary {
-        display: none;
-    }
-
-    /* Menua horizontalean erakutsi eta ZENTRATU */
-    .menu {
-        display: flex !important; /* JS gabe ere agertzeko segurtasuna */
-        position: absolute;       /* SASKIA.CSS ESTILOA: Kokapen absolutua */
-        left: 50%;                /* Erdialdera eraman */
-        top: 50%;                 /* Bertikalki zentratu */
-        transform: translate(-50%, -50%); /* Zentroketa doitu */
-        
-        flex-direction: row;
-        gap: 30px;
-        background: transparent;
-        box-shadow: none;
-        padding: 0;
-        width: auto;
-        height: auto;
-        list-style: none;
-        margin: 0; /* Marjinak kendu */
-    }
-
-    .menu li {
-        width: auto;
-        text-align: left;
-    }
-
-    .menu li a {
-        border-bottom: none;
-        padding: 5px 10px;
-        font-size: 18px;
-        color: white;
-        text-decoration: none;
-        background-color: transparent;
-        border-radius: 5px;
-        transition: background 0.3s;
-    }
-
-    .menu li a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+    
+    .logos ul {
+        justify-content: center;
     }
 }
 
