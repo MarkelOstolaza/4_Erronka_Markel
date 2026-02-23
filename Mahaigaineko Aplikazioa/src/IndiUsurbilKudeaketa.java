@@ -1,8 +1,18 @@
-
 import java.util.*;
 
+/**
+ * Aplikazioaren klase nagusia.
+ * Kontsola bidezko erabiltzaile-interfaze (CLI) bat eskaintzen du produktuak 
+ * kudeatzeko, besteak beste: berriak sortu, ezabatu, bilatu, eta datuak esportatu/inportatu.
+ */
 public class IndiUsurbilKudeaketa {
 
+    /**
+     * Aplikazioaren sarrera-puntua eta exekuzio-fluxuaren kontrolatzaile nagusia.
+     * Menu bat bistaratzen du eta erabiltzailearen sarreraren arabera
+     * {@link ProduktuDAO} klaseko metodo egokiak deitzen ditu.
+     * * @param args Komando-lerroko argumentuak (ez dira programan zehar erabiltzen).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ProduktuDAO dao = new ProduktuDAO();
