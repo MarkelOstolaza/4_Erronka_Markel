@@ -1,3 +1,4 @@
+
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -8,7 +9,7 @@ class IndiUsurbilKudeaketaTest {
     void testFluxuOsoa() {
         // Simulazio honetan, erabiltzaileak programa ireki eta hainbat gauza egiten ditu segidan.
         // String erraldoi honek teklatuko sarrera guztiak ditu, lerroz lerro (\n).
-        
+
         StringBuilder inputs = new StringBuilder();
 
         // --- 1. KASUA: Produktu berria sortu ---
@@ -59,17 +60,16 @@ class IndiUsurbilKudeaketaTest {
         // Test honek bereziki ezabatzeko eta eguneratzeko fluxua probatzen du.
         // Kontuz: Honek benetako DBan IDak asmatzea zaila denez, fluxua (inputs) 
         // prestatzen dugu kodearen zati horietatik pasatzeko saiakeran.
-        
+
         // Estrategia: 3 -> Ordenatu -> ID bat sartu -> 2 (Ezabatu)
         // Erroreak saihesteko, existitzen ez den ID bat probatuko dugu lehenbizi
         // kodearen "Ez da ID hori duen produkturik aurkitu" adarra ukitzeko.
-
         String input = "3\n1\n999999\n1\n10\n6\n"; // 3 (Ikusi) -> 1 (Ordena) -> ID 999999 -> 1 (Eguneratu) -> Stock 10 -> 6 (Irten)
         // Oharra: IDa existitzen ez bada, kodeak mezua emango du eta menura itzuliko da edo jarraituko du.
-        
+
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        
+
         IndiUsurbilKudeaketa.main(new String[]{});
     }
 }

@@ -1,9 +1,10 @@
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*; // Hau beharrezkoa da assertEquals, assertAll, etab. erabiltzeko.
 
 /**
- * Produktua klasearen unitate-testak.
- * Ereduaren (Model) funtzionamendua egiaztatzen du.
+ * Produktua klasearen unitate-testak. Ereduaren (Model) funtzionamendua
+ * egiaztatzen du.
  */
 class ProduktuaTest {
 
@@ -23,13 +24,13 @@ class ProduktuaTest {
 
         // Egiaztapena (Asserts)
         assertAll("Produktuaren propietateak",
-            () -> assertEquals(id, p.getId()),
-            () -> assertEquals(izena, p.getIzena()),
-            () -> assertEquals(deskribapena, p.getDeskribapena()),
-            () -> assertEquals(prezioa, p.getPrezioa()),
-            () -> assertEquals(stocka, p.getStocka()),
-            () -> assertEquals(kategoriaId, p.getKategoriaId()),
-            () -> assertEquals(irudiaUrl, p.getIrudiaUrl())
+                () -> assertEquals(id, p.getId()),
+                () -> assertEquals(izena, p.getIzena()),
+                () -> assertEquals(deskribapena, p.getDeskribapena()),
+                () -> assertEquals(prezioa, p.getPrezioa()),
+                () -> assertEquals(stocka, p.getStocka()),
+                () -> assertEquals(kategoriaId, p.getKategoriaId()),
+                () -> assertEquals(irudiaUrl, p.getIrudiaUrl())
         );
     }
 
@@ -46,11 +47,11 @@ class ProduktuaTest {
     @Test
     void testSetters() {
         Produktua p = new Produktua();
-        
+
         // Zure Produktua klaseak BAKARRIK setId dauka. 
         // setIzena eta besteak ez daudenez, ezin dira testatu gehitu gabe.
         p.setId(99);
-        
+
         assertEquals(99, p.getId());
     }
 

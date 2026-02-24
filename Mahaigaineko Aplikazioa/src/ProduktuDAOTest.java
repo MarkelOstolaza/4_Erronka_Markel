@@ -1,3 +1,4 @@
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -30,7 +31,7 @@ class ProduktuDAOTest {
         List<Produktua> lista = dao.bilatuProduktua(izena);
         assertFalse(lista.isEmpty());
         Produktua berreskuratua = lista.get(0);
-        
+
         // Eguneratu
         berreskuratua.setId(berreskuratua.getId()); // Coverage-rako setter deia
         Produktua pBerria = new Produktua(berreskuratua.getId(), izena, "DeskEguneratua", 60.0, 10, 1, "url2");
@@ -54,11 +55,11 @@ class ProduktuDAOTest {
         }
 
         dao.kargatuCSV(csvFile.getAbsolutePath());
-        
+
         // "Ondo" bakarrik sartu beharko litzateke, edo errorea kudeatu.
         // Test honekin kodeko adar guztiak (if/else eta catch) ikutzen ditugu.
     }
-    
+
     @Test
     void testKargatuCSVFitxategiaEzDaExistitzen() {
         // Exception (FileNotFound) catch blokea probatzeko
@@ -77,7 +78,7 @@ class ProduktuDAOTest {
     void testGetKategoriak() {
         assertNotNull(dao.getKategoriak());
     }
-    
+
     @Test
     void testGetProduktuak() {
         assertNotNull(dao.getProduktuak("stocka"));
