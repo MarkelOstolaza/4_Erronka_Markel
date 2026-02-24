@@ -1,3 +1,4 @@
+
 /**
  * Produktu baten informazioa gordetzeko eta kudeatzeko klasea.
  * Datu-baseko PRODUKTUAK taulako erregistro bat errepresentatzen du.
@@ -21,6 +22,7 @@ public class Produktua {
     /**
      * Eraikitzailea datu guztiekin. Normalean datu-basetik irakurritako
      * informazioarekin objektuak sortzeko erabiltzen da.
+     *
      * * @param id Produktuaren identifikatzailea.
      * @param izena Produktuaren izena.
      * @param deskribapena Produktuaren azalpena.
@@ -40,8 +42,9 @@ public class Produktua {
     }
 
     /**
-     * Eraikitzailea ID gabe. Produktu berriak sortzeko eta datu-basean
-     * txertatu aurretik erabiltzen da.
+     * Eraikitzailea ID gabe. Produktu berriak sortzeko eta datu-basean txertatu
+     * aurretik erabiltzen da.
+     *
      * * @param izena Produktuaren izena.
      * @param deskribapena Produktuaren azalpena.
      * @param prezioa Produktuaren salmenta prezioa.
@@ -67,6 +70,7 @@ public class Produktua {
 
     /**
      * Produktuaren identifikatzailea ezartzen du.
+     *
      * @param id Identifikatzaile berria.
      */
     public void setId(int id) {
@@ -117,6 +121,7 @@ public class Produktua {
 
     /**
      * Produktuaren informazioa testu formatuan itzultzen du.
+     *
      * * @return Produktuaren datuak dauzkan String formatuduna.
      */
     @Override

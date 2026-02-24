@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
@@ -7,14 +8,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Produktuen datuak kudeatzeko Data Access Object (DAO) klasea.
- * Datu-basearekin interakzioak (CRUD) eta fitxategien kudeaketa (CSV/JSON) egiten ditu.
+ * Produktuen datuak kudeatzeko Data Access Object (DAO) klasea. Datu-basearekin
+ * interakzioak (CRUD) eta fitxategien kudeaketa (CSV/JSON) egiten ditu.
  */
 public class ProduktuDAO {
 
     /**
-     * 1. Produktu berri bat txertatzen du datu-basean.
-     * Sorkuntza-data gisa uneko data (Gaurkoa) erabiltzen du automatikoki.
+     * 1. Produktu berri bat txertatzen du datu-basean. Sorkuntza-data gisa
+     * uneko data (Gaurkoa) erabiltzen du automatikoki.
+     *
      * * @param p Datu-basean gordeko den {@link Produktua} objektua.
      */
     public void produktuBerriaSortu(Produktua p) {
@@ -35,7 +37,9 @@ public class ProduktuDAO {
     }
 
     /**
-     * 2. Produktu baten informazioa eguneratzen du datu-basean bere ID-a erabiliz.
+     * 2. Produktu baten informazioa eguneratzen du datu-basean bere ID-a
+     * erabiliz.
+     *
      * * @param p Eguneratuko den produktua, bere datu berriekin.
      */
     public void eguneratuProduktua(Produktua p) {
@@ -56,6 +60,7 @@ public class ProduktuDAO {
 
     /**
      * 3. Produktu bat datu-basetik ezabatzen du bere ID-aren arabera.
+     *
      * * @param id Ezabatu nahi den produktuaren identifikatzailea.
      */
     public void ezabatuProduktua(int id) {
@@ -69,8 +74,11 @@ public class ProduktuDAO {
     }
 
     /**
-     * 4. Produktu guztien zerrenda lortzen du, hautatutako eremuaren arabera ordenatuta.
-     * * @param ordenazioa Ordenatzeko erabiliko den irizpidea ("prezioa" edo "stocka").
+     * 4. Produktu guztien zerrenda lortzen du, hautatutako eremuaren arabera
+     * ordenatuta.
+     *
+     * * @param ordenazioa Ordenatzeko erabiliko den irizpidea ("prezioa" edo
+     * "stocka").
      * @return Produktuen zerrenda (List).
      */
     public List<Produktua> getProduktuak(String ordenazioa) {
@@ -87,8 +95,9 @@ public class ProduktuDAO {
     }
 
     /**
-     * 5. Izenaren arabera produktuak bilatzen ditu datu-basean.
-     * Hitzen zatiak ere onartzen ditu (LIKE operadorea erabiliz).
+     * 5. Izenaren arabera produktuak bilatzen ditu datu-basean. Hitzen zatiak
+     * ere onartzen ditu (LIKE operadorea erabiliz).
+     *
      * * @param izena Bilatu nahi den testua edo produktuaren izena.
      * @return Bilaketarekin bat datozen produktuen zerrenda.
      */
@@ -109,6 +118,7 @@ public class ProduktuDAO {
 
     /**
      * 6. Datu-basean dauden kategoria guztiak lortzen ditu.
+     *
      * * @return Kategoria ID-ak eta Izenak gordetzen dituen Map bat.
      */
     public Map<Integer, String> getKategoriak() {
@@ -125,8 +135,9 @@ public class ProduktuDAO {
     }
 
     /**
-     * 7. CSV fitxategi batetik produktuak irakurri eta datu-basean banan-banan txertatzen ditu.
-     * Fitxategiko lehen lerroa (goiburua) saltatu egiten du.
+     * 7. CSV fitxategi batetik produktuak irakurri eta datu-basean banan-banan
+     * txertatzen ditu. Fitxategiko lehen lerroa (goiburua) saltatu egiten du.
+     *
      * * @param fitxPath Irakurri beharreko CSV fitxategiaren bide-izena.
      */
     public void kargatuCSV(String fitxPath) {
@@ -146,7 +157,9 @@ public class ProduktuDAO {
     }
 
     /**
-     * 8. Produktu zerrenda bat JSON formatuan esportatzen du adierazitako fitxategira.
+     * 8. Produktu zerrenda bat JSON formatuan esportatzen du adierazitako
+     * fitxategira.
+     *
      * * @param fitxIzena Sortuko den fitxategiaren izena edo bide-izena.
      * @param produktuak Esportatu nahi den produktuen zerrenda.
      */
@@ -165,7 +178,9 @@ public class ProduktuDAO {
     }
 
     /**
-     * ResultSet bateko uneko erregistroa irakurri eta {@link Produktua} objektu bat sortzen du.
+     * ResultSet bateko uneko erregistroa irakurri eta {@link Produktua} objektu
+     * bat sortzen du.
+     *
      * * @param rs Datu-baseko kontsultaren emaitzak dauzkan ResultSet-a.
      * @return Datu-basetik irakurritako informazioarekin sortutako produktua.
      * @throws SQLException Datuak irakurtzean errorea gertatzen bada.

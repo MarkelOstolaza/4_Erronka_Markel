@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "C:\\javafx\\lib*.jar",
+        "test-lib\\**\\*.jar",
+        "test-lib/junit-platform-console-standalone-1.13.0-M3.jar",
+        "lib/mysql-connector-j-9.6.0.jar"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}
