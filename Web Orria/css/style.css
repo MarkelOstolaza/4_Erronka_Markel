@@ -1,0 +1,416 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f7f4;
+    line-height: 1.6;
+    color: #333333;
+
+    /* FOOTER-A BEHEAN MANTENTZEKO */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- HEADER ESTILOAK --- */
+header {
+    background: linear-gradient(#000049, rgb(47, 13, 133));
+    margin: 0 auto;
+    padding: 15px 30px;
+    position: relative;
+    border-bottom: 1px solid #d9d9d9;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2000px;
+    margin: auto;
+    position: relative; /* Hau beharrezkoa da menua zentratzeko */
+}
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30%; 
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px;
+    width: max-content; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    
+}
+
+.menu ul {
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffffff; 
+    padding: 12px 20px;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* LOGOA */
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+/* SASKIA IKONOA */
+.carrito {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.carrito img {
+    width: 32px;
+    height: 32px;
+}
+
+#cuenta-carrito {
+    background-color: rgb(255, 234, 0);
+    padding: 0px 6px;
+    border-radius: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    color: #000049;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* --- MAIN (EDUKI NAGUSIA) --- */
+main {
+    width: 100%;
+    flex: 1; /* HONEK BULTZATZEN DU FOOTER-A BEHERA */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- FOOTER ESTILOAK --- */
+.footer {
+    background: linear-gradient(#000049, rgb(47, 13, 133));
+    padding: 40px 30px;
+    border-top: 1px solid #444444;
+    color: #cccccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.oharlegalak {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.oharlegalak a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.oharlegalak a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
+
+.logos ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.logos img {
+    height: 30px;
+}
+
+.logos a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 1px solid #555555;
+}
+
+.logos a:hover {
+    transform: scale(1.1);
+}
+
+/* --- RESPONSIVE / MUGIKORRA (Menu Hanburgesa) --- */
+@media (max-width: 768px) {
+    .menu-principal {
+        display: none;
+    }
+    
+    .menu-hamburguesa {
+        display: block;
+    }
+    
+    details {
+        margin-right: 0;
+    }
+    
+    .menu {
+        
+        left: 0;
+        right: 0;
+        padding: 15px 0;
+        transform: translateX(150%);
+        display: block;
+            background: linear-gradient( #000049, rgb(47, 13, 133)); 
+    }
+    
+    .menu ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .menu li {
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .menu li a {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+    
+    nav {
+        padding: 0 15px;
+    }
+    
+    .logos ul {
+        justify-content: center;
+    }
+}
+
+/* --- BESTELAKO ESTILOAK --- */
+
+/* Login */
+.login-main {
+    justify-content: center;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #000049;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Karrusela */
+.carousel-container {
+    position: relative;
+    height: 400px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.carousel-track-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: white;
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide.current-slide {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide-content {
+    text-align: center;
+}
+
+.slide-content img {
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000049;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: -50px;
+}
+
+.carousel-btn.next {
+    right: -50px;
+}
+
+/* Produktuak Grid */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid #000049;
+    color: #000049;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.filter-btn.active {
+    background: #000049;
+    color: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+}
+
+/* Estatistikak */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #000049;
+}
